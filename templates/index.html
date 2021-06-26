@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Klasifikasi Kardiotocografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <meta content="" name="description">
+
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/style.css" rel="stylesheet">
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <div class="sidebar-header">
+                    <div class="sidebar-brand">
+                        <a href="#">Brand</a></div>
+                </div>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#team">Team</a></li>
+                <li class="dropdown">
+                    <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Works <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
+                        <div class="dropdown-header">Dropdown heading</div>
+                        <li><a href="#pictures">Pictures</a></li>
+                        <li><a href="#videos">Videeos</a></li>
+                        <li><a href="#books">Books</a></li>
+                        <li><a href="#art">Art</a></li>
+                        <li><a href="#awards">Awards</a></li>
+                    </ul>
+                </li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#followme">Follow me</a></li>
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+
+
+            <!-- ======= Hero Section ======= -->
+            <section id="hero" class="hero d-flex">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1 d-flex flex-column ">
+                            <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
+                        </div>
+                        <div class="col-md-8 d-flex flex-column ">
+                            <h1>Klasifikasi Kardiotocografi</h1>
+                            <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
+                        </div>
+
+                        <form method="post" action="/result" enctype="multipart/form-data">
+                            <div class="col-md-12" style="margin-top: 50px;">
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Baseline Value</label>
+                                        <input type="text" class="form-control" name="baseline_value"
+                                            id="baseline_value" placeholder="Baseline Value" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Accelerations </label>
+                                        <input type="text" class="form-control" name="accelerations" id="accelerations"
+                                            placeholder="Accelerations" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Fetal Movement</label>
+                                        <input type="text" class="form-control" name="fetal_movement"
+                                            id="fetal_movement" placeholder="Fetal Movement" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Uterine Contractions</label>
+                                        <input type="text" class="form-control" name="uterine_contractions"
+                                            id="uterine_contractions" placeholder="Uterine Contractions" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Light Decelerations</label>
+                                        <input type="text" class="form-control" name="light_decelerations"
+                                            id="light_decelerations" placeholder="Light Decelerations" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Severe Decelerations</label>
+                                        <input type="text" class="form-control" name="severe_decelerations"
+                                            id="severe_decelerations" placeholder="Severe Decelerations" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Prolongued Decelerations</label>
+                                        <input type="text" class="form-control" name="prolongued_decelerations"
+                                            id="prolongued_decelerations" placeholder="Prolongued Decelerations"
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Abnormal Short Term Variability</label>
+                                        <input type="text" class="form-control" name="abnormal_short_term_variability"
+                                            id="abnormal_short_term_variability"
+                                            placeholder="Abnormal Short Term Variability" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Mean Value Of Short Term Variability</label>
+                                        <input type="text" class="form-control"
+                                            name="mean_value_of_short_term_variability"
+                                            id="mean_value_of_short_term_variability"
+                                            placeholder="Mean Value Of Short Term Variability" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Percentage Of Time With Abnormal</label>
+                                        <input type="text" class="form-control" name="percentage_of_time_with_abnormal"
+                                            id="percentage_of_time_with_abnormal"
+                                            placeholder="Percentage Of Time With Abnormal Long Term Variability"
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Mean Value Of Long Term Variability</label>
+                                        <input type="text" class="form-control"
+                                            name="mean_value_of_long_term_variability"
+                                            id="mean_value_of_long_term_variability"
+                                            placeholder="Mean Value Of Long Term Variability" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Width</label>
+                                        <input type="text" class="form-control" name="histogram_width"
+                                            id="histogram_width" placeholder="Histogram Width" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Min</label>
+                                        <input type="text" class="form-control" name="histogram_min" id="histogram_min"
+                                            placeholder="Histogram Min" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Max</label>
+                                        <input type="text" class="form-control" name="histogram_max" id="histogram_max"
+                                            placeholder="Histogram Max" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Number Of Peaks</label>
+                                        <input type="text" class="form-control" name="histogram_number_of_peaks"
+                                            id="histogram_number_of_peaks" placeholder="Histogram Number Of Peaks"
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Number Of Zeroes</label>
+                                        <input type="text" class="form-control" name="histogram_number_of_zeroes"
+                                            id="histogram_number_of_zeroes" placeholder="Histogram Number Of Zeroes"
+                                            value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Mode</label>
+                                        <input type="text" class="form-control" name="histogram_mode"
+                                            id="histogram_mode" placeholder="Histogram Mode" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Mean</label>
+                                        <input type="text" class="form-control" name="histogram_mean"
+                                            id="histogram_mean" placeholder="Histogram Mean" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Median</label>
+                                        <input type="text" class="form-control" name="histogram_median"
+                                            id="histogram_median" placeholder="Histogram Median" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Variance</label>
+                                        <input type="text" class="form-control" name="histogram_variance"
+                                            id="histogram_variance" placeholder="Histogram Variance" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                    <div class="form-group">
+                                        <label>Histogram Tendency</label>
+                                        <input type="text" class="form-control" name="histogram_tendency"
+                                            id="histogram_tendency" placeholder="Histogram Tendency" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 d-flex flex-column ">
+                                <div class="text-center text-lg-start">
+                                    <input class="btn btn-get-started" type="submit" value="Cek Klasifikasi">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12 d-flex flex-column"
+                        style="margin-top: 50px; font-size: 9px; align-items: flex-end;">
+                        <a href="/pengujian">Pengujian</a>
+                    </div>
+                </div>
+            </section><!-- End Hero -->
+        </div>
+    </div>
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="../static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../static/main.js"></script>
+
+</body>
+
+</html>

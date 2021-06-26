@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Klasifikasi Kardiotocografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <meta content="" name="description">
+
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/style.css" rel="stylesheet">
+
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1 d-flex flex-column ">
+                    <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
+                </div>
+                <div class="col-md-8 d-flex flex-column ">
+                    <h1>Klasifikasi Kardiotocografi</h1>
+                    <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
+                </div>
+                <div class="col-md-6" style="margin-top: 50px; float: left; ">
+                    <h2><u>Hasil Diagnosis</u></h2><br>
+                    <h5 style="padding-left: 20px;">Kategori: <b><u>{{ hasil }}</u></b></h5>
+                    <a style="padding-left: 20px;">Waktu Pemrosesan: {{ time_result }}</a>
+                </div>
+                <div class="col-md-6" style="margin-top: 50px; float: left; text-align-last: center">
+                    <div class="text-center text-lg-start">
+                        <a href="/"
+                            class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                            <span>Kembali</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-12 " style="margin-top: 30px;">
+                    <h4><u>Data Diagnosis</u></h4>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Baseline Value: </label><br>
+                        <label style="padding-left: 10px;">{{ data[0] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Accelerations: </label><br>
+                        <label style="padding-left: 10px;">{{ data[1] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Fetal Movement: </label><br>
+                        <label style="padding-left: 10px;">{{ data[2] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Uterine Contractions: </label><br>
+                        <label style="padding-left: 10px;">{{ data[3] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Light Decelerations: </label><br>
+                        <label style="padding-left: 10px;">{{ data[4] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Severe Decelerations: </label><br>
+                        <label style="padding-left: 10px;">{{ data[5] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Prolongued Decelerations: </label><br>
+                        <label style="padding-left: 10px;">{{ data[6] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Abnormal Short Term Variability: </label><br>
+                        <label style="padding-left: 10px;">{{ data[7] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Mean Value Of Short Term Variability: </label><br>
+                        <label style="padding-left: 10px;">{{ data[8] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Percentage Of Time With Abnormal: </label><br>
+                        <label style="padding-left: 10px;">{{ data[9] }}</label> </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Mean Value Of Long Term Variability: </label><br>
+                        <label style="padding-left: 10px;">{{ data[10] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Width: </label><br>
+                        <label style="padding-left: 10px;">{{ data[11] }}</label> </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Min: </label><br>
+                        <label style="padding-left: 10px;">{{ data[12] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Max: </label><br>
+                        <label style="padding-left: 10px;">{{ data[13] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Number Of Peaks: </label><br>
+                        <label style="padding-left: 10px;">{{ data[14] }}</label> </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Number Of Zeroes: </label><br>
+                        <label style="padding-left: 10px;">{{ data[15] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Mode: </label><br>
+                        <label style="padding-left: 10px;">{{ data[16] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Mean: </label><br>
+                        <label style="padding-left: 10px;">{{ data[17] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Median: </label><br>
+                        <label style="padding-left: 10px;">{{ data[18] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Variance: </label><br>
+                        <label style="padding-left: 10px;">{{ data[19] }}</label>
+                    </div>
+                    <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                        <label>Histogram Tendency: </label><br>
+                        <label style="padding-left: 10px;">{{ data[20] }}</label>
+                    </div>
+                </div>
+            </div>
+
+    </section><!-- End Hero -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="../static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../static/main.js"></script>
+
+</body>
+
+</html>
