@@ -76,174 +76,336 @@
 
                         <form method="post" action="/result" enctype="multipart/form-data">
                             <div class="col-md-12" style="margin-top: 50px;">
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Baseline Value</label>
-                                        <input type="text" class="form-control" name="baseline_value"
-                                            id="baseline_value" placeholder="Baseline Value" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Baseline
+                                            Value : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="form-control col-md-2 col-sm-2" type="text"
+                                                name="baseline_value" id="baseline_value" placeholder="Baseline Value"
+                                                value="" style="width: 250px;">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah <i>baseline</i>/dasar
+                                                denyut jantung janin (denyut per menit)</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Accelerations </label>
-                                        <input type="text" class="form-control" name="accelerations" id="accelerations"
-                                            placeholder="Accelerations" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Accelerations :
+                                        </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="accelerations" id="accelerations"
+                                                placeholder="Accelerations" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah akselerasi per
+                                                detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Fetal Movement</label>
-                                        <input type="text" class="form-control" name="fetal_movement"
-                                            id="fetal_movement" placeholder="Fetal Movement" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Fetal
+                                            Movement : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="fetal_movement" id="fetal_movement"
+                                                placeholder="Fetal Movement" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah gerakan janin per
+                                                detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Uterine Contractions</label>
-                                        <input type="text" class="form-control" name="uterine_contractions"
-                                            id="uterine_contractions" placeholder="Uterine Contractions" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Uterine
+                                            Contractions : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="uterine_contractions" id="uterine_contractions"
+                                                placeholder="Uterine Contractions" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah kontraksi uterus per
+                                                detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Light Decelerations</label>
-                                        <input type="text" class="form-control" name="light_decelerations"
-                                            id="light_decelerations" placeholder="Light Decelerations" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Light
+                                            Decelerations : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="light_decelerations" id="light_decelerations"
+                                                placeholder="Light Decelerations" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah deselerasi ringan
+                                                per detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Severe Decelerations</label>
-                                        <input type="text" class="form-control" name="severe_decelerations"
-                                            id="severe_decelerations" placeholder="Severe Decelerations" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Severe
+                                            Decelerations : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="severe_decelerations" id="severe_decelerations"
+                                                placeholder="Severe Decelerations" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah deselerasi berat
+                                                per detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Prolongued Decelerations</label>
-                                        <input type="text" class="form-control" name="prolongued_decelerations"
-                                            id="prolongued_decelerations" placeholder="Prolongued Decelerations"
-                                            value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Prolongued
+                                            Decelerations : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="prolongued_decelerations"
+                                                id="prolongued_decelerations" placeholder="Prolongued Decelerations"
+                                                value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah deselerasi
+                                                berkepanjangan per detik</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Abnormal Short Term Variability</label>
-                                        <input type="text" class="form-control" name="abnormal_short_term_variability"
-                                            id="abnormal_short_term_variability"
-                                            placeholder="Abnormal Short Term Variability" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Abnormal Short
+                                            Term Variability</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="abnormal_short_term_variability"
+                                                id="abnormal_short_term_variability"
+                                                placeholder="Abnormal Short Term Variability" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah Persentase waktu dari
+                                                variabilitas jangka pendek yang abnormal</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Mean Value Of Short Term Variability</label>
-                                        <input type="text" class="form-control"
-                                            name="mean_value_of_short_term_variability"
-                                            id="mean_value_of_short_term_variability"
-                                            placeholder="Mean Value Of Short Term Variability" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Mean
+                                            Short Term Variability</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="mean_value_of_short_term_variability"
+                                                id="mean_value_of_short_term_variability"
+                                                placeholder="Mean Value Of Short Term Variability" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
+                                                variabilitas jangka pendek</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Percentage Of Time With Abnormal</label>
-                                        <input type="text" class="form-control" name="percentage_of_time_with_abnormal"
-                                            id="percentage_of_time_with_abnormal"
-                                            placeholder="Percentage Of Time With Abnormal Long Term Variability"
-                                            value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Abnormal Long
+                                            Term Variability</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="percentage_of_time_with_abnormal"
+                                                id="percentage_of_time_with_abnormal"
+                                                placeholder="Percentage Of Time With Abnormal Long Term Variability"
+                                                value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah Persentase waktu dari
+                                                variabilitas jangka panjang yang abnormal</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Mean Value Of Long Term Variability</label>
-                                        <input type="text" class="form-control"
-                                            name="mean_value_of_long_term_variability"
-                                            id="mean_value_of_long_term_variability"
-                                            placeholder="Mean Value Of Long Term Variability" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Mean
+                                            Long Term Variability</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="mean_value_of_long_term_variability"
+                                                id="mean_value_of_long_term_variability"
+                                                placeholder="Mean Value Of Long Term Variability" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
+                                                variabilitas jangka panjang</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Width</label>
-                                        <input type="text" class="form-control" name="histogram_width"
-                                            id="histogram_width" placeholder="Histogram Width" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Width</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_width" id="histogram_width"
+                                                placeholder="Histogram Width" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah lebar dari histogram detak
+                                                jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Min</label>
-                                        <input type="text" class="form-control" name="histogram_min" id="histogram_min"
-                                            placeholder="Histogram Min" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Min</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_min" id="histogram_min"
+                                                placeholder="Histogram Min" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah nilai minimum dari
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Max</label>
-                                        <input type="text" class="form-control" name="histogram_max" id="histogram_max"
-                                            placeholder="Histogram Max" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Max</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_max" id="histogram_max"
+                                                placeholder="Histogram Max" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah nilai maximum dari
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Number Of Peaks</label>
-                                        <input type="text" class="form-control" name="histogram_number_of_peaks"
-                                            id="histogram_number_of_peaks" placeholder="Histogram Number Of Peaks"
-                                            value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram Number
+                                            Of Peaks</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_number_of_peaks"
+                                                id="histogram_number_of_peaks" placeholder="Histogram Number Of Peaks"
+                                                value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
+                                                histogram detak jantung janin mencapai titik tertinggi</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Number Of Zeroes</label>
-                                        <input type="text" class="form-control" name="histogram_number_of_zeroes"
-                                            id="histogram_number_of_zeroes" placeholder="Histogram Number Of Zeroes"
-                                            value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram Number
+                                            Of Zeroes</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_number_of_zeroes"
+                                                id="histogram_number_of_zeroes" placeholder="Histogram Number Of Zeroes"
+                                                value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
+                                                histogram detak jantung janin mencapai titik 0</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Mode</label>
-                                        <input type="text" class="form-control" name="histogram_mode"
-                                            id="histogram_mode" placeholder="Histogram Mode" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Mode</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_mode" id="histogram_mode"
+                                                placeholder="Histogram Mode" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah modus dari nilai
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Mean</label>
-                                        <input type="text" class="form-control" name="histogram_mean"
-                                            id="histogram_mean" placeholder="Histogram Mean" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Mean</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_mean" id="histogram_mean"
+                                                placeholder="Histogram Mean" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah mean dari nilai
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Median</label>
-                                        <input type="text" class="form-control" name="histogram_median"
-                                            id="histogram_median" placeholder="Histogram Median" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Median</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_median" id="histogram_median"
+                                                placeholder="Histogram Median" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah median dari nilai
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Variance</label>
-                                        <input type="text" class="form-control" name="histogram_variance"
-                                            id="histogram_variance" placeholder="Histogram Variance" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Variance</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_variance" id="histogram_variance"
+                                                placeholder="Histogram Variance" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah varian dari nilai
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label>Histogram Tendency</label>
-                                        <input type="text" class="form-control" name="histogram_tendency"
-                                            id="histogram_tendency" placeholder="Histogram Tendency" value="">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px;">Histogram
+                                            Tendency</label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
+                                                type="text" name="histogram_tendency" id="histogram_tendency"
+                                                placeholder="Histogram Tendency" value="">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                style="float: left; font-size: 12px;">Adalah tendensi dari nilai
+                                                histogram detak jantung janin</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 d-flex flex-column ">
+                            <div class="col-md-12 d-flex flex-column" style="padding-left: 360px;">
                                 <div class="text-center text-lg-start">
                                     <input class="btn btn-get-started" type="submit" value="Cek Klasifikasi">
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="col-md-12 d-flex flex-column"
-                        style="margin-top: 50px; font-size: 9px; align-items: flex-end;">
-                        <a href="/pengujian">Pengujian</a>
                     </div>
                 </div>
             </section>
