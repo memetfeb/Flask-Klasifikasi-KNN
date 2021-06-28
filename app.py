@@ -185,5 +185,38 @@ def pengujian():
   
   return render_template('pengujian.html', knn=knn, lenknn=lenknn, kfold=kfold, lenkfold=lenkfold ,time_pengujian=time_pengujian)
 
+@app.route("/datasetasli")
+def datasetasli():
+
+  #Import from csv
+  d = pd.read_csv('static/fetal_health.csv')
+  X = d.drop(columns="fetal_health")
+  y = d.fetal_health
+  y = np.array(y)
+
+  data = np.array(d)
+
+  lendata = len(data) 
+  return render_template('datasetasli.html', data=data, lendata=lendata)
+
+@app.route("/datasetsmote")
+def datasetsmote():
+
+  #Import from csv
+  d = pd.read_csv('static/fetal_health.csv')
+  X = d.drop(columns="fetal_health")
+  y = d.fetal_health
+  y = np.array(y)
+
+  oversample = SMOTE()
+  X_scaled, y = oversample.fit_resample(np.array(X), y)
+
+  # Join Data dan Label
+  y1 = y.reshape(4965, 1) 
+  data = np.hstack((X_scaled, y1))
+
+  lendata = len(data) 
+  return render_template('datasetsmote.html', data=data, lendata=lendata)
+
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

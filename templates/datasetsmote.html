@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Klasifikasi Kardiotokografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <meta content="" name="description">
+
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../static/img/favicon.png" rel="icon">
+    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- SIDEBAR -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Data Table CSS -->
+    <link rel="stylesheet" href="../static/datatable/css/dataTables.css">
+    <link rel="stylesheet" href="../static/datatable/css/dataTables.bootstrap.css">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/style.css" rel="stylesheet">
+
+</head>
+
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+    <!-- SIDEBAR -->
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
+
+                <ul class="list-unstyled components mb-5">
+                    <li class="active" style="margin-bottom: 10px;">
+                        <a href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;"></span> Klasifikasi</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/pengujian"><span class="fa fa-percent mr-3" style="margin-right: 10px;"></span>
+                            Pengujian Model</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/datasetasli"><span class="fa fa-file mr-3" style="margin-right: 10px;"></span> Dataset
+                            Asli</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/datasetsmote"><span class="fa fa-copy mr-3" style="margin-right: 10px;"></span>
+                            Dataset Setelah SMOTE</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <!-- ======= Hero Section ======= -->
+            <section id="hero" class="hero d-flex">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1 d-flex flex-column ">
+                            <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
+                        </div>
+                        <div class="col-md-8 d-flex flex-column ">
+                            <h1>Klasifikasi Kardiotokografi</h1>
+                            <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 50px; float: left; ">
+                            <h2 style="margin-bottom: 10px;">Dataset Setelah SMOTE</h2>
+                            <a>Dataset asli dalam
+                                penelitian ini memiliki label atau kelas yang tidak seimbang, oleh karena itu dataset
+                                asli akan di buat seimbang dengan menggunakan teknik SMOTE.
+                                Metode Synthetic Minority Over-samplingTechnique (SMOTE) merupakan metode yang populer
+                                diterapkan dalam rangka menangani ketidak seimbangan kelas. <br><br>
+                                Jumlah data pada Dataset setelah dilaukan penyeimbangan data menggunakan SMOTE menjadi
+                                4.965 data.
+                            </a>
+                        </div>
+
+                        <div class="col-12 lg-12 sm-12" style="margin-top: 30px; font-size: 10px;">
+                            <table id="myTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr class="text-center" style="background-color: #fff;">
+                                        <td>No.</td>
+                                        <td>Label</td>
+                                        <td>Baseline Value</td>
+                                        <td>Accelerations</td>
+                                        <td>Fetal Movement</td>
+                                        <td>Uterine Contractions</td>
+                                        <td>Light Dece</td>
+                                        <td>Severe Dece</td>
+                                        <td>Prolongued Dece</td>
+                                        <td>Ab ShortTerm</td>
+                                        <td>Mean ShortTerm</td>
+                                        <td>Ab LongTerm</td>
+                                        <td>Mean LongTerm</td>
+                                        <td>Histogram Width</td>
+                                        <td>Histogram Min</td>
+                                        <td>Histogram Max</td>
+                                        <td>His NumPeaks</td>
+                                        <td>His NumZeroes</td>
+                                        <td>Histogram Mode</td>
+                                        <td>Histogram Mean</td>
+                                        <td>Histogram Median</td>
+                                        <td>Histogram Variance</td>
+                                        <td>Histogram Tendency</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(0, lendata) %}
+                                    <tr>
+                                        <td class="align-middle text-center">{{ i+1 }}</td>
+                                        <td class="align-middle">{% 
+                                            if(data[i][21] == 1):%}
+                                            Normal
+                                            {% elif(data[i][21] == 2):%}
+                                            Suspect
+                                            {% else: %}
+                                            Pathological
+                                            {% endif %}
+                                        </td>
+                                        <td class="align-middle">{{ data[i][0] }}</td>
+                                        <td class="align-middle">{{ data[i][1] }}</td>
+                                        <td class="align-middle">{{ data[i][2] }}</td>
+                                        <td class="align-middle">{{ data[i][3] }}</td>
+                                        <td class="align-middle">{{ data[i][4] }}</td>
+                                        <td class="align-middle">{{ data[i][5] }}</td>
+                                        <td class="align-middle">{{ data[i][6] }}</td>
+                                        <td class="align-middle">{{ data[i][7] }}</td>
+                                        <td class="align-middle">{{ data[i][8] }}</td>
+                                        <td class="align-middle">{{ data[i][9] }}</td>
+                                        <td class="align-middle">{{ data[i][10] }}</td>
+                                        <td class="align-middle">{{ data[i][11] }}</td>
+                                        <td class="align-middle">{{ data[i][12] }}</td>
+                                        <td class="align-middle">{{ data[i][13] }}</td>
+                                        <td class="align-middle">{{ data[i][14] }}</td>
+                                        <td class="align-middle">{{ data[i][15] }}</td>
+                                        <td class="align-middle">{{ data[i][16] }}</td>
+                                        <td class="align-middle">{{ data[i][17] }}</td>
+                                        <td class="align-middle">{{ data[i][18] }}</td>
+                                        <td class="align-middle">{{ data[i][19] }}</td>
+                                        <td class="align-middle">{{ data[i][20] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End Hero -->
+
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="../static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- SIDEBAR-->
+    <script src="../static/sidebar/popper.js"></script>
+    <script src="../static/sidebar/bootstrap.min.js"></script>
+    <script src="../static/sidebar/jquery.min.js"></script>
+    <script src="../static/sidebar/main.js"></script>
+
+    <!-- Data Table JS -->
+    <script src="../static/datatable/js/dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "scrollX": true
+            });
+        });
+    </script>
+
+    <!-- Template Main JS File -->
+    <script src="../static/main.js"></script>
+
+</body>
+
+</html>

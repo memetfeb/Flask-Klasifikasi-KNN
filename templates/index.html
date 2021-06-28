@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Klasifikasi Kardiotocografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <title>Klasifikasi Kardiotokografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
@@ -18,6 +18,9 @@
     <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
+    <!-- SIDEBAR -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- Template Main CSS File -->
     <link href="../static/style.css" rel="stylesheet">
 
@@ -25,48 +28,39 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
 
-    <div id="wrapper">
-        <div class="overlay"></div>
+    <!-- SIDEBAR -->
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+            </div>
+            <div class="p-4">
 
-        <!-- Sidebar -->
-        <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
-            <ul class="nav sidebar-nav">
-                <div class="sidebar-header">
-                    <div class="sidebar-brand">
-                        <a href="#">Brand</a></div>
-                </div>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#team">Team</a></li>
-                <li class="dropdown">
-                    <a href="#works" class="dropdown-toggle" data-toggle="dropdown">Works <span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu animated fadeInLeft" role="menu">
-                        <div class="dropdown-header">Dropdown heading</div>
-                        <li><a href="#pictures">Pictures</a></li>
-                        <li><a href="#videos">Videeos</a></li>
-                        <li><a href="#books">Books</a></li>
-                        <li><a href="#art">Art</a></li>
-                        <li><a href="#awards">Awards</a></li>
-                    </ul>
-                </li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#followme">Follow me</a></li>
-            </ul>
+                <ul class="list-unstyled components mb-5">
+                    <li class="active" style="margin-bottom: 10px;">
+                        <a href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;"></span> Klasifikasi</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/pengujian"><span class="fa fa-percent mr-3" style="margin-right: 10px;"></span>
+                            Pengujian Model</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/datasetasli"><span class="fa fa-file mr-3" style="margin-right: 10px;"></span> Dataset
+                            Asli</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a href="/datasetsmote"><span class="fa fa-copy mr-3" style="margin-right: 10px;"></span>
+                            Dataset Setelah SMOTE</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        <!-- /#sidebar-wrapper -->
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                <span class="hamb-top"></span>
-                <span class="hamb-middle"></span>
-                <span class="hamb-bottom"></span>
-            </button>
-
-
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
             <!-- ======= Hero Section ======= -->
             <section id="hero" class="hero d-flex">
 
@@ -252,9 +246,11 @@
                         <a href="/pengujian">Pengujian</a>
                     </div>
                 </div>
-            </section><!-- End Hero -->
+            </section>
+            <!-- End Hero -->
         </div>
     </div>
+
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
@@ -262,6 +258,13 @@
 
     <!-- Vendor JS Files -->
     <script src="../static/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- SIDEBAR-->
+    <script src="../static/sidebar/popper.js"></script>
+    <script src="../static/sidebar/bootstrap.min.js"></script>
+    <script src="../static/sidebar/jquery.min.js"></script>
+    <script src="../static/sidebar/main.js"></script>
+
 
     <!-- Template Main JS File -->
     <script src="../static/main.js"></script>
