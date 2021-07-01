@@ -84,7 +84,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="form-control col-md-2 col-sm-2" type="text"
                                                 name="baseline_value" id="baseline_value" placeholder="Baseline Value"
-                                                value="" style="width: 250px;">
+                                                value=133 style="width: 250px;" required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah <i>baseline</i>/dasar
                                                 denyut jantung janin (denyut per menit)</label>
@@ -99,7 +99,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="accelerations" id="accelerations"
-                                                placeholder="Accelerations" value="">
+                                                placeholder="Accelerations" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah akselerasi per
                                                 detik</label>
@@ -114,7 +114,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="fetal_movement" id="fetal_movement"
-                                                placeholder="Fetal Movement" value="">
+                                                placeholder="Fetal Movement" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah gerakan janin per
                                                 detik</label>
@@ -129,7 +129,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="uterine_contractions" id="uterine_contractions"
-                                                placeholder="Uterine Contractions" value="">
+                                                placeholder="Uterine Contractions" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah kontraksi uterus per
                                                 detik</label>
@@ -144,7 +144,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="light_decelerations" id="light_decelerations"
-                                                placeholder="Light Decelerations" value="">
+                                                placeholder="Light Decelerations" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi ringan
                                                 per detik</label>
@@ -159,7 +159,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="severe_decelerations" id="severe_decelerations"
-                                                placeholder="Severe Decelerations" value="">
+                                                placeholder="Severe Decelerations" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi berat
                                                 per detik</label>
@@ -175,7 +175,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="prolongued_decelerations"
                                                 id="prolongued_decelerations" placeholder="Prolongued Decelerations"
-                                                value="">
+                                                value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi
                                                 berkepanjangan per detik</label>
@@ -191,7 +191,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="abnormal_short_term_variability"
                                                 id="abnormal_short_term_variability"
-                                                placeholder="Abnormal Short Term Variability" value="">
+                                                placeholder="Abnormal Short Term Variability" value=60 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah Persentase waktu dari
                                                 variabilitas jangka pendek yang abnormal</label>
@@ -207,7 +207,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="mean_value_of_short_term_variability"
                                                 id="mean_value_of_short_term_variability"
-                                                placeholder="Mean Value Of Short Term Variability" value="">
+                                                placeholder="Mean Value Of Short Term Variability" value=0.8 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
                                                 variabilitas jangka pendek</label>
@@ -224,7 +224,7 @@
                                                 type="text" name="percentage_of_time_with_abnormal"
                                                 id="percentage_of_time_with_abnormal"
                                                 placeholder="Percentage Of Time With Abnormal Long Term Variability"
-                                                value="">
+                                                value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah Persentase waktu dari
                                                 variabilitas jangka panjang yang abnormal</label>
@@ -240,7 +240,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="mean_value_of_long_term_variability"
                                                 id="mean_value_of_long_term_variability"
-                                                placeholder="Mean Value Of Long Term Variability" value="">
+                                                placeholder="Mean Value Of Long Term Variability" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
                                                 variabilitas jangka panjang</label>
@@ -255,7 +255,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_width" id="histogram_width"
-                                                placeholder="Histogram Width" value="">
+                                                placeholder="Histogram Width" value=39 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah lebar dari histogram detak
                                                 jantung janin</label>
@@ -270,7 +270,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_min" id="histogram_min"
-                                                placeholder="Histogram Min" value="">
+                                                placeholder="Histogram Min" value=50 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai minimum dari
                                                 histogram detak jantung janin</label>
@@ -285,7 +285,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_max" id="histogram_max"
-                                                placeholder="Histogram Max" value="">
+                                                placeholder="Histogram Max" value=157 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai maximum dari
                                                 histogram detak jantung janin</label>
@@ -301,7 +301,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_number_of_peaks"
                                                 id="histogram_number_of_peaks" placeholder="Histogram Number Of Peaks"
-                                                value="">
+                                                value=1 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
                                                 histogram detak jantung janin mencapai titik tertinggi</label>
@@ -317,7 +317,7 @@
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_number_of_zeroes"
                                                 id="histogram_number_of_zeroes" placeholder="Histogram Number Of Zeroes"
-                                                value="">
+                                                value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
                                                 histogram detak jantung janin mencapai titik 0</label>
@@ -332,7 +332,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_mode" id="histogram_mode"
-                                                placeholder="Histogram Mode" value="">
+                                                placeholder="Histogram Mode" value=133 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah modus dari nilai
                                                 histogram detak jantung janin</label>
@@ -347,7 +347,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_mean" id="histogram_mean"
-                                                placeholder="Histogram Mean" value="">
+                                                placeholder="Histogram Mean" value=143 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah mean dari nilai
                                                 histogram detak jantung janin</label>
@@ -362,7 +362,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_median" id="histogram_median"
-                                                placeholder="Histogram Median" value="">
+                                                placeholder="Histogram Median" value=146 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah median dari nilai
                                                 histogram detak jantung janin</label>
@@ -377,7 +377,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_variance" id="histogram_variance"
-                                                placeholder="Histogram Variance" value="">
+                                                placeholder="Histogram Variance" value=1 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah varian dari nilai
                                                 histogram detak jantung janin</label>
@@ -392,7 +392,7 @@
                                         <div class="col-md-9 col-sm-9" style="float: left;">
                                             <input class="col-md-2 col-sm-2 form-control" style="width: 250px;"
                                                 type="text" name="histogram_tendency" id="histogram_tendency"
-                                                placeholder="Histogram Tendency" value="">
+                                                placeholder="Histogram Tendency" value=0 required>
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 style="float: left; font-size: 12px;">Adalah tendensi dari nilai
                                                 histogram detak jantung janin</label>
@@ -402,7 +402,11 @@
                             </div>
                             <div class="col-md-12 d-flex flex-column" style="padding-left: 360px;">
                                 <div class="text-center text-lg-start">
-                                    <input class="btn btn-get-started" type="submit" value="Cek Klasifikasi">
+                                    <!-- <input class="btn btn-get-started" type="submit" value="Cek Klasifikasi"
+                                        style="height:50px;"> -->
+                                    <button type="submit" class="btn btn-get-started">
+                                        Cek Klasifikasi <i class="fa fa-search "></i>
+                                    </button>
                                 </div>
                             </div>
                         </form>
