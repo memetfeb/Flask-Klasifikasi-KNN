@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Klasifikasi Kardiotocografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <title>Klasifikasi Kardiotokografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
@@ -17,6 +17,27 @@
     <!-- Vendor CSS Files -->
     <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- SIDEBAR -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- LOADER JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var myVar;
+            $("#load").click(function () {
+                $("body").addClass("loading");
+            });
+        });
+
+        $(document).ready(function () {
+            var myVar;
+            $(".jsload").click(function () {
+                $("body").addClass("loading");
+            });
+        });
+    </script>
 
     <!-- Template Main CSS File -->
     <link href="../static/style.css" rel="stylesheet">
@@ -42,97 +63,166 @@
 </style>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero d-flex">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-1 d-flex flex-column ">
-                    <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
-                </div>
-                <div class="col-md-8 d-flex flex-column ">
-                    <h1>Klasifikasi Kardiotocografi</h1>
-                    <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
-                </div>
-                <div class="col-md-6" style="margin-top: 50px; float: left; ">
-                    <h2>Pengujian K-Fold Cross Validation</h2>
-                    <h5>Total Lama Pengujian: <b>{{ time_pengujian }}</b></h5>
-                </div>
-                <div class="col-md-6" style="margin-top: 50px; float: left; text-align-last: center">
-                    <div class="text-center text-lg-start">
-                        <a href="/"
-                            class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
-                            <span>Kembali</span>
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-12 " style="margin-top: 30px;">
-                    <h4>Pengujian 1</h4>
-                    <a>Pengujian dilakukan untuk mencari nilai K terbaik pada K-NN . Dengan menetapkan nilai K pada
-                        KFold adalah 10 dan menguji coba nilai K pada KNN dari 3 - 22.</a><br><br>
-                    <a><b>Nilai K Terbaik : K-{{ knn[0][0] }} ( {{ knn[0][1] }} )</b></a>
-                    <table>
-                        <th>
-                            <tr>
-                                <td>No.</td>
-                                <td>K</td>
-                                <td>Time</td>
-                                <td>Hasil</td>
-                            </tr>
-                        </th>
-
-                        {% for i in range(0, lenknn) %}
-                        <tr>
-                            <td>{{ i+1 }}</td>
-                            <td>K-{{ knn[1][i][0] }}</td>
-                            <td>{{ knn[1][i][2] }}</td>
-                            <td>{{ knn[1][i][1] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-                <div class="col-md-12 " style="margin-top: 50px;">
-                    <h4>Pengujian 2</h4>
-                    <a>Pengujian dilakukan untuk mencari nilai K terbaik pada K-Fold Cross Validation. Dengan menetapkan
-                        nilai K pada K-NN adalah hasil dari Pengujian 1 dan menguji coba nilai K pada K-Fold Cross
-                        Validation dari 2 - 10.</a><br><br>
-                    <a><b>Nilai KFold Terbaik : Kfold-{{ kfold[0][0] }} ( {{ kfold[0][1] }} )</b></a>
-                    <table>
-                        <th>
-                            <tr>
-                                <td>No.</td>
-                                <td>KFold</td>
-                                <td>Time</td>
-                                <td>Hasil</td>
-                            </tr>
-                        </th>
-
-                        {% for i in range(0, lenkfold) %}
-                        <tr>
-                            <td>{{ i+1 }}</td>
-                            <td>K-{{ kfold[1][i][0] }}</td>
-                            <td>{{ kfold[1][i][2] }}</td>
-                            <td>{{ kfold[1][i][1] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
-                </div>
+    <div id="loader"></div>
+    <!-- SIDEBAR -->
+    <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar" class="active">
+            <div class="custom-menu">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                    <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
             </div>
+            <div class="p-4">
 
-    </section><!-- End Hero -->
+                <ul class="list-unstyled components mb-5">
+                    <li class="active" style="margin-bottom: 10px;">
+                        <a class="jsload" href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;"></span>
+                            Klasifikasi</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a class="jsload" href="/pengujian"><span class="fa fa-percent mr-3"
+                                style="margin-right: 10px;"></span>
+                            Pengujian Model</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a class="jsload" href="/datasetasli"><span class="fa fa-file mr-3"
+                                style="margin-right: 10px;"></span> Dataset
+                            Asli</a>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <a class="jsload" href="/datasetsmote"><span class="fa fa-copy mr-3"
+                                style="margin-right: 10px;"></span>
+                            Dataset Setelah SMOTE</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
+        <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5 pt-5">
+            <!-- ======= Hero Section ======= -->
+            <section id="hero" class="hero d-flex">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1 d-flex flex-column ">
+                            <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
+                        </div>
+                        <div class="col-md-8 d-flex flex-column ">
+                            <h1>Klasifikasi Kardiotocografi</h1>
+                            <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 50px; float: left; ">
+                            <h2>Pengujian K-Fold Cross Validation</h2>
+                            <h5>Total Lama Pengujian: <b>{{ time_pengujian }}</b></h5>
+                        </div>
+                        <div class="col-md-6" style="margin-top: 50px; float: left; text-align-last: center">
+                            <div class="text-center text-lg-start">
+                                <a href="/"
+                                    class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                                    <span>Kembali</span>
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 " style="margin-top: 30px;">
+                            <h4>Pengujian 1</h4>
+                            <a>Pengujian dilakukan untuk mencari nilai K terbaik pada K-NN . Dengan menetapkan nilai K
+                                pada
+                                KFold adalah 10 dan menguji coba nilai K pada KNN dari 3 - 22.</a><br><br>
+                            <a><b>Nilai K Terbaik : K-{{ knn[0][0] }} ( {{ knn[0][1] }} )</b></a>
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td>No.</td>
+                                        <td>K</td>
+                                        <td>Time</td>
+                                        <td>Hasil</td>
+                                    </tr>
+                                </th>
+
+                                {% for i in range(0, lenknn) %}
+                                <tr>
+                                    <td>{{ i+1 }}</td>
+                                    <td>K-{{ knn[1][i][0] }}</td>
+                                    <td>{{ knn[1][i][2] }}</td>
+                                    <td>{{ knn[1][i][1] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="col-md-12 " style="margin-top: 50px;">
+                            <h4>Pengujian 2</h4>
+                            <a>Pengujian dilakukan untuk mencari nilai K terbaik pada K-Fold Cross Validation. Dengan
+                                menetapkan
+                                nilai K pada K-NN adalah hasil dari Pengujian 1 dan menguji coba nilai K pada K-Fold
+                                Cross
+                                Validation dari 2 - 10.</a><br><br>
+                            <a><b>Nilai KFold Terbaik : Kfold-{{ kfold[0][0] }} ( {{ kfold[0][1] }} )</b></a>
+                            <table>
+                                <th>
+                                    <tr>
+                                        <td>No.</td>
+                                        <td>KFold</td>
+                                        <td>Time</td>
+                                        <td>Hasil</td>
+                                    </tr>
+                                </th>
+
+                                {% for i in range(0, lenkfold) %}
+                                <tr>
+                                    <td>{{ i+1 }}</td>
+                                    <td>K-{{ kfold[1][i][0] }}</td>
+                                    <td>{{ kfold[1][i][2] }}</td>
+                                    <td>{{ kfold[1][i][1] }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+
+            </section>
+            <!-- End Hero -->
+
+        </div>
+    </div>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    <!-- Loader -->
+    <div class="overlay"></div>
+
     <!-- Vendor JS Files -->
     <script src="../static/bootstrap/js/bootstrap.bundle.js"></script>
 
+    <!-- SIDEBAR-->
+    <script src="../static/sidebar/popper.js"></script>
+    <script src="../static/sidebar/bootstrap.min.js"></script>
+    <script src="../static/sidebar/jquery.min.js"></script>
+    <script src="../static/sidebar/main.js"></script>
+
+
     <!-- Template Main JS File -->
     <script src="../static/main.js"></script>
+
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                    "body").style.visibility = "hidden";
+                document.querySelector(
+                    "#loader").style.visibility = "visible";
+            } else {
+                document.querySelector(
+                    "#loader").style.display = "none";
+                document.querySelector(
+                    "body").style.visibility = "visible";
+            }
+        };
+    </script>
 
 </body>
 
