@@ -6,7 +6,7 @@ import time
 
 def time_convert(sec):
   mins = sec // 60
-  sec = sec % 60
+  sec = round(sec % 60, 3)
   hours = mins // 60
   mins = mins % 60
   return "{0}:{1}:{2}".format(int(hours),int(mins),sec)
@@ -137,7 +137,8 @@ def pengujian1(kelas1,kelas2,kelas3):
         start_time = time.time()
         a = []
         a.append(i)
-        a.append(np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean())
+        nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
+        a.append(round(nilai, 3))
         end_time = time.time()
         time_lapsed = end_time - start_time
         time_lapsed = time_convert(time_lapsed)
@@ -148,7 +149,7 @@ def pengujian1(kelas1,kelas2,kelas3):
             nilaikterbaik = a[1]
             kterbaik = a[0]
     terbaik.append(kterbaik)
-    terbaik.append(nilaikterbaik)
+    terbaik.append(round(nilaikterbaik, 3))
     hasil.append(terbaik)
     hasil.append(akurasi)
     return hasil
@@ -163,7 +164,8 @@ def pengujian2(kelas1,kelas2,kelas3):
         start_time = time.time()
         a = []
         a.append(i)
-        a.append(np.array(kfcv(kelas1,kelas2,kelas3,i, 4)).mean())
+        nilai = np.array(kfcv(kelas1,kelas2,kelas3,i, 4)).mean()
+        a.append(round(nilai, 3))
         end_time = time.time()
         time_lapsed = end_time - start_time
         time_lapsed = time_convert(time_lapsed)
@@ -174,7 +176,7 @@ def pengujian2(kelas1,kelas2,kelas3):
             nilaifoldterbaik = a[1]
             foldterbaik = a[0]
     terbaik.append(foldterbaik)
-    terbaik.append(nilaifoldterbaik)
+    terbaik.append(round(nilaifoldterbaik, 3))
     hasil.append(terbaik)
     hasil.append(akurasi)
     return hasil
