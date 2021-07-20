@@ -31,12 +31,12 @@
             });
         });
 
-        $(document).ready(function () {
-            var myVar;
-            $(".jsload").click(function () {
-                $("body").addClass("loading");
-            });
-        });
+        // $(document).ready(function () {
+        //     var myVar;
+        //     $(".jsload").click(function () {
+        //         $("body").addClass("loading");
+        //     });
+        // });
     </script>
 
     <!-- Template Main CSS File -->
@@ -59,23 +59,20 @@
 
                 <ul class="list-unstyled components mb-5">
                     <li class="active" style="margin-bottom: 10px;">
-                        <a class="jsload" href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;"></span>
-                            Klasifikasi</a>
+                        <a class="jsload" href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;">
+                            </span> Klasifikasi </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/pengujian"><span class="fa fa-percent mr-3"
-                                style="margin-right: 10px;"></span>
-                            Pengujian Model</a>
+                                style="margin-right: 10px;"></span> Pengujian Model </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/datasetasli"><span class="fa fa-file mr-3"
-                                style="margin-right: 10px;"></span> Dataset
-                            Asli</a>
+                                style="margin-right: 10px;"></span> Dataset Awal </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/datasetsmote"><span class="fa fa-copy mr-3"
-                                style="margin-right: 10px;"></span>
-                            Dataset Setelah SMOTE</a>
+                                style="margin-right: 10px;"></span> Dataset Setelah SMOTE </a>
                     </li>
                 </ul>
             </div>
@@ -86,115 +83,357 @@
             <!-- ======= Hero Section ======= -->
             <section id="hero" class="hero d-flex">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-1 d-flex flex-column ">
-                            <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
-                        </div>
-                        <div class="col-md-8 d-flex flex-column ">
-                            <h1>Klasifikasi Kardiotocografi</h1>
-                            <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
-                        </div>
-                        <div class="col-md-12" style="margin-top: 50px; float: left; ">
-                            <h2><u>Hasil Diagnosis</u></h2><br>
-                            <h5 style="padding-left: 20px;">Kategori: <b><u>{{ hasil }}</u></b></h5>
-                            <a style="padding-left: 20px;">Waktu Pemrosesan: {{ time_result }}</a>
-                        </div>
-                        <div class="col-md-12" style="margin-top: 50px; float: left;">
-                            <div class="text-center text-lg-start">
-                                <a href="/"
-                                    class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center jsload">
-                                    <i class="bi bi-arrow-left" style="margin-right: 10px;"></i>
-                                    <span>Kembali</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- <div class="col-md-12 " style="margin-top: 30px;">
-                            <h4><u>Data Diagnosis</u></h4>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Baseline Value: </label><br>
-                                <label style="padding-left: 10px;">{{ data[0] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Accelerations: </label><br>
-                                <label style="padding-left: 10px;">{{ data[1] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Fetal Movement: </label><br>
-                                <label style="padding-left: 10px;">{{ data[2] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Uterine Contractions: </label><br>
-                                <label style="padding-left: 10px;">{{ data[3] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Light Decelerations: </label><br>
-                                <label style="padding-left: 10px;">{{ data[4] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Severe Decelerations: </label><br>
-                                <label style="padding-left: 10px;">{{ data[5] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Prolongued Decelerations: </label><br>
-                                <label style="padding-left: 10px;">{{ data[6] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Abnormal Short Term Variability: </label><br>
-                                <label style="padding-left: 10px;">{{ data[7] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Mean Value Of Short Term Variability: </label><br>
-                                <label style="padding-left: 10px;">{{ data[8] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Percentage Of Time With Abnormal: </label><br>
-                                <label style="padding-left: 10px;">{{ data[9] }}</label> </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Mean Value Of Long Term Variability: </label><br>
-                                <label style="padding-left: 10px;">{{ data[10] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Width: </label><br>
-                                <label style="padding-left: 10px;">{{ data[11] }}</label> </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Min: </label><br>
-                                <label style="padding-left: 10px;">{{ data[12] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Max: </label><br>
-                                <label style="padding-left: 10px;">{{ data[13] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Number Of Peaks: </label><br>
-                                <label style="padding-left: 10px;">{{ data[14] }}</label> </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Number Of Zeroes: </label><br>
-                                <label style="padding-left: 10px;">{{ data[15] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Mode: </label><br>
-                                <label style="padding-left: 10px;">{{ data[16] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Mean: </label><br>
-                                <label style="padding-left: 10px;">{{ data[17] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Median: </label><br>
-                                <label style="padding-left: 10px;">{{ data[18] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Variance: </label><br>
-                                <label style="padding-left: 10px;">{{ data[19] }}</label>
-                            </div>
-                            <div class="mb-3 col-md-3" style="float: left; padding: 20px;">
-                                <label>Histogram Tendency: </label><br>
-                                <label style="padding-left: 10px;">{{ data[20] }}</label>
-                            </div>
-                        </div> -->
+                <!-- Hasil Diagnosis -->
+                <div class="row col-md-6" style="float: left; border-right-style: ridge;">
+                    <div class="col-md-12" style="text-align: center; margin:auto; margin-bottom: 20px;">
+                        <h1 style="font-size: xx-large;">Hasil Diagnosis</h1>
+                        <h5 style="margin-top: 30px;">Kategori: <b><u>{{ hasil }}</u></b></h5>
+                        <a>Waktu Pemrosesan: {{ time_result }}</a>
                     </div>
+                    <div class="col-md-12" style="margin-top: 20px; float: left; text-align-last: center;">
+                        <div class="text-center text-lg-start">
+                            <a href="/"
+                                class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center jsload">
+                                <i class="bi bi-arrow-left" style="margin-right: 10px;"></i>
+                                <span>Kembali</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Diagnosis -->
+                <div class="row col-md-6" style="float: left; padding-left: 80px">
+                    <div class="col-md-8 d-flex flex-column" style="text-align: center;">
+                        <h1 style="font-size: xx-large;">Data Diagnosis</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Kolom 1 -->
+                        <div class="col-md-5" style="margin-top: 10px; float: left; padding-left: 10px;">
+                            <div class="col-md-12" style="margin-top: 20px; float: left; ">
+
+                                <!-- Baseline -->
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 5px;">
+                                    <h1 style="font-size: large;"><u>Baseline : </u></h1>
+                                </div>
+
+                                <!-- heart rate -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Heart
+                                            Rate</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[0] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Accelerations -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Accelerations</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[1] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Fetal Movement -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Fetal
+                                            Movement</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[2] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Uterine Contractions -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Uterine
+                                            Contractions</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[3] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Decelerations -->
+                                <div class="mb-12 col-md-12"
+                                    style="float: left; padding-bottom: 5px; margin-top: 20px;">
+                                    <h1 style="font-size: large;"><u>Decelerations : </u></h1>
+                                </div>
+
+                                <!-- Light Decelerations -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Light</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[4] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Severe Decelerations -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Severe</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[5] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Prolongued Decelerations -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Prolongued</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[6] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Short Term Variability -->
+                                <div class="mb-6 col-md-6" style="float: left; padding-bottom: 5px; margin-top: 20px;">
+                                    <h1 style="font-size: large;"><u>Short Term Variability : </u></h1>
+                                </div>
+
+                                <!-- Abnormal Short Term Variability -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Abnormal</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[7] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Mean Short Term Variability -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[8] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Long Term Variability -->
+                                <div class="mb-6 col-md-6" style="float: left; padding-bottom: 5px; margin-top: 20px;">
+                                    <h1 style="font-size: large;"><u>Long Term Variability : </u></h1>
+                                </div>
+
+                                <!-- Abnormal Long Term Variability -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Abnormal</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[9] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Mean Long Term Variability -->
+                                <div class="mb-12 col-md-12" style="float: left; ">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">{{ "%g" % data[10] }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Kolom 2 -->
+                        <div class="col-md-5" style="margin-top: 10px; float: left; padding-left: 10px;  ">
+                            <div class="col-md-12" style="margin-top: 20px; float: left; ">
+
+                                <!-- Histogram -->
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 5px;">
+                                    <h1 style="font-size: large;"><u>Histogram : </u></h1>
+                                </div>
+
+                                <!-- Histogram Width -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Width</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[11] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Min -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Min</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[12] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Max -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Max</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[13] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Number Of Peaks -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Number of
+                                            Peaks</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[14] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Number Of Zeroes -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Number of
+                                            Zeroes</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[15] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Mode -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mode</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[16] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Mean -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[17] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Median -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Median</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[18] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Variance -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Variance</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[19] }}</label>
+                                    </div>
+                                </div>
+
+                                <!-- Histogram Tendency -->
+                                <div class="mb-12 col-md-12" style="float: left;">
+                                    <div class="form-group">
+                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Tendency</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-right: 10px;">
+                                            : </label>
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px; padding-left: 10px;">
+                                            {{ "%g" % data[20] }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </section>
             <!-- End Hero -->
 

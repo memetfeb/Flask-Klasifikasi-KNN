@@ -12,6 +12,7 @@ import imblearn
 from imblearn.over_sampling import SMOTE
 import pengujian as p1
 import time
+from flask_paginate import Pagination, get_page_args, get_page_parameter
 
 app = Flask(__name__)
 
@@ -189,8 +190,30 @@ def pengujian():
   
   return render_template('pengujian.html', knn=knn, lenknn=lenknn, kfold=kfold, lenkfold=lenkfold ,time_pengujian=time_pengujian)
 
+#Import data asli / data awal from csv
+data_asli = np.array(pd.read_csv('static/fetal_health.csv'))
+
+def get_users_data_asli(offset=0, per_page=100):
+    return data_asli[offset: offset + per_page]
+
 @app.route("/datasetasli")
 def datasetasli():
+
+   #Import from csv
+  # d = pd.read_csv('static/fetal_health.csv')
+  # X = d.drop(columns="fetal_health")
+  # y = d.fetal_health
+  # y = np.array(y)
+  # data = np.array(d)
+
+  page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+  total = len(data_asli)
+  pagination_users = get_users_data_asli(offset=offset, per_page=per_page)
+  pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+  return render_template('datasetasli.html', users=pagination_users, page=page, per_page=per_page, pagination=pagination,)
+
+@app.route("/datasetasli2")
+def datasetasli2():
 
   #Import from csv
   d = pd.read_csv('static/fetal_health.csv')
@@ -201,10 +224,50 @@ def datasetasli():
   data = np.array(d)
 
   lendata = len(data) 
-  return render_template('datasetasli.html', data=data, lendata=lendata)
+  return render_template('datasetasli2.html', data=data, lendata=lendata)
 
+
+#Data SMOTE
+# dataasli = np.array(pd.read_csv('static/fetal_health.csv'))
+d_smote = pd.read_csv('static/fetal_health.csv')
+X_asli = d_smote.drop(columns="fetal_health")
+y_asli = np.array(d_smote.fetal_health)
+
+#SMOTE
+oversample = SMOTE()
+X_smote, y_smote = oversample.fit_resample(np.array(X_asli), y_asli)
+
+# Join Data dan Label
+y_smote = y_smote.reshape(4965, 1) 
+data_smote = np.hstack((X_smote, y_smote))
+data_smote = np.round(data_smote, 3)
+
+def get_users_data_smote(offset=0, per_page=100):
+    return data_smote[offset: offset + per_page]
 @app.route("/datasetsmote")
 def datasetsmote():
+
+  #Import from csv
+  # d = pd.read_csv('static/fetal_health.csv')
+  # X = d.drop(columns="fetal_health")
+  # y = d.fetal_health
+  # y = np.array(y)
+
+  # oversample = SMOTE()
+  # X_scaled, y = oversample.fit_resample(np.array(X), y)
+
+  # Join Data dan Label
+  # y1 = y.reshape(4965, 1) 
+  # data = np.hstack((X_scaled, y1))
+
+  page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+  total = len(data_smote)
+  pagination_users = get_users_data_smote(offset=offset, per_page=per_page)
+  pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+  return render_template('datasetsmote.html', users=pagination_users, page=page, per_page=per_page, pagination=pagination,)
+
+@app.route("/datasetsmote1")
+def datasetsmote1():
 
   #Import from csv
   d = pd.read_csv('static/fetal_health.csv')
@@ -221,6 +284,15 @@ def datasetsmote():
 
   lendata = len(data) 
   return render_template('datasetsmote.html', data=data, lendata=lendata)
+
+
+# DATA AWAL
+
+
+# def get_users(offset=0, per_page=100):
+#     return data[offset: offset + per_page]
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

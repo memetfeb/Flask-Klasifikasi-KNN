@@ -732,3 +732,28 @@ body.loading .overlay {
   z-index: 999;
   background: rgba(255, 255, 255, 0.8) url("loader.gif") center no-repeat;
 }
+
+/* INPUT */
+.inputcss {
+  width: 70px;
+  float: left;
+  margin-right: 10px;
+}
+
+/* PAGINATE TABLE */
+.pagination-page-info {
+  padding: .6em;
+  padding-left: 0;
+  width: 40em;
+  margin: .5em;
+  margin-left: 0;
+  font-size: 12px;
+}
+
+.pagination-page-info b {
+  color: black;
+  background: #6aa6ed;
+  padding-left: 2px;
+  padding: .1em .25em;
+  font-size: 150%;
+}

@@ -36,11 +36,17 @@
         });
     </script>
 
+    <style>
+        input {
+            text-align: right;
+        }
+    </style>
+
 
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
-    <div id="loader"></div>
+    <!-- <div id="loader"></div> -->
     <!-- SIDEBAR -->
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar" class="active">
@@ -54,23 +60,20 @@
 
                 <ul class="list-unstyled components mb-5">
                     <li class="active" style="margin-bottom: 10px;">
-                        <a class="jsload" href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;"></span>
-                            Klasifikasi</a>
+                        <a class="jsload" href="/"><span class="fa fa-search mr-3" style="margin-right: 10px;">
+                            </span> Klasifikasi </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/pengujian"><span class="fa fa-percent mr-3"
-                                style="margin-right: 10px;"></span>
-                            Pengujian Model</a>
+                                style="margin-right: 10px;"></span> Pengujian Model </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/datasetasli"><span class="fa fa-file mr-3"
-                                style="margin-right: 10px;"></span> Dataset
-                            Asli</a>
+                                style="margin-right: 10px;"></span> Dataset Awal </a>
                     </li>
                     <li style="margin-bottom: 10px;">
                         <a class="jsload" href="/datasetsmote"><span class="fa fa-copy mr-3"
-                                style="margin-right: 10px;"></span>
-                            Dataset Setelah SMOTE</a>
+                                style="margin-right: 10px;"></span> Dataset Setelah SMOTE </a>
                     </li>
                 </ul>
             </div>
@@ -79,45 +82,62 @@
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5 pt-5">
             <!-- ======= Hero Section ======= -->
-            <section id="hero" class="hero d-flex">
+            <section id="hero" class="hero">
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-1 d-flex flex-column ">
-                            <img src="../static/img/fetal1.png" alt="" width="110px" height="110px">
+                <!-- <div class="container" style="margin-left: 0px; margin-right: 0px;"> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-5" style="float: left; text-align: end; padding-right: 10px;">
+                            <img src="../static/img/fetal1.png" alt="" width="70px" height="70px">
                         </div>
-                        <div class="col-md-8 d-flex flex-column ">
-                            <h1>Klasifikasi Kardiotocografi</h1>
-                            <h2>Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
+                        <div class="col-md-6" style="float: left;">
+                            <h1 style="font-size: x-large;">Klasifikasi Kardiotokografi</h1>
+                            <h2 style="font-size: smaller;">Dengan Algoritma K-Nearest Neighbor (K-NN)</h2>
                         </div>
-
+                    </div>
+                    <div style="zoom: 90%">
                         <form method="post" action="/result" enctype="multipart/form-data">
-                            <div class="col-md-6" style="margin-top: 50px; float: left; border-right: double">
+                            <!-- Kolom 1 -->
+                            <div class="col-md-4"
+                                style="margin-top: 50px; float: left; padding-left: 30px; border-right-style: ridge; height: 616px">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Decelerations
+                                        :</u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Baseline : </u></h1>
+                                </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Baseline
-                                            Value : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="form-control col-md-2 col-sm-2" type="text"
-                                                name="baseline_value" id="baseline_value" placeholder="Baseline Value"
-                                                value=133 style="width: 150px;" required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
-                                                style="float: left; font-size: 12px;">Adalah <i>baseline</i>/dasar
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Heart
+                                            Rate</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="baseline_value" id="baseline_value" placeholder="" value=133
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
+                                                style="float: left; font-size: 12px; ">Adalah
+                                                <i>baseline</i>/dasar
                                                 denyut jantung janin (denyut per menit)</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Accelerations :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="accelerations" id="accelerations"
-                                                placeholder="Accelerations" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Accelerations</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="accelerations" id="accelerations" placeholder="" value=0
+                                                maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah akselerasi per
                                                 detik</label>
                                         </div>
@@ -125,14 +145,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Fetal
-                                            Movement : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="fetal_movement" id="fetal_movement"
-                                                placeholder="Fetal Movement" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Fetal
+                                            Movement</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="fetal_movement" id="fetal_movement" placeholder="" value=0
+                                                maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah gerakan janin per
                                                 detik</label>
                                         </div>
@@ -140,34 +163,41 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Uterine
-                                            Contractions : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="uterine_contractions" id="uterine_contractions"
-                                                placeholder="Uterine Contractions" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Uterine
+                                            Contractions</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="uterine_contractions" id="uterine_contractions" placeholder=""
+                                                value=0 maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah kontraksi uterus per
                                                 detik</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
-                                    <label class="col-form-label col-md-6 col-sm-6 label-align"
-                                        style="float: left; padding-right: 20px; font-size: x-large;"><u>Decelerations
-                                            :</u>
-                                    </label>
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Decelerations
+                                        :</u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Decelerations : </u></h1>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Light : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="light_decelerations" id="light_decelerations"
-                                                placeholder="Light Decelerations" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Light</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="light_decelerations" id="light_decelerations" placeholder=""
+                                                value=0 maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi ringan
                                                 per detik</label>
                                         </div>
@@ -175,13 +205,16 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Severe : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="severe_decelerations" id="severe_decelerations"
-                                                placeholder="Severe Decelerations" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Severe</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="severe_decelerations" id="severe_decelerations" placeholder=""
+                                                value=0 maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi berat
                                                 per detik</label>
                                         </div>
@@ -189,37 +222,45 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Prolongued :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="prolongued_decelerations"
-                                                id="prolongued_decelerations" placeholder="Prolongued Decelerations"
-                                                value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Prolongued</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="prolongued_decelerations" id="prolongued_decelerations"
+                                                placeholder="" value=0 maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah deselerasi
                                                 berkepanjangan per detik</label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- Kolom 2 -->
+                            <div class="col-md-4"
+                                style="margin-top: 50px; float: left; padding-left: 30px; border-right-style: ridge; height: 616px; ">
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
-                                    <label class="col-form-label col-md-6 col-sm-6 label-align"
-                                        style="float: left; padding-right: 20px; font-size: x-large;"><u>Short
-                                            Term Variability : </u>
-                                    </label>
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Short
+                                        Term Variability : </u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Short Term Variability : </u></h1>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Abnormal
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Abnormal</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
                                             : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="abnormal_short_term_variability"
-                                                id="abnormal_short_term_variability"
-                                                placeholder="Abnormal Short Term Variability" value=60 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="abnormal_short_term_variability"
+                                                id="abnormal_short_term_variability" placeholder="" value=60
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah Persentase waktu dari
                                                 variabilitas jangka pendek yang abnormal</label>
                                         </div>
@@ -227,37 +268,42 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Mean : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="mean_value_of_short_term_variability"
-                                                id="mean_value_of_short_term_variability"
-                                                placeholder="Mean Value Of Short Term Variability" value=0.8 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="mean_value_of_short_term_variability"
+                                                id="mean_value_of_short_term_variability" placeholder="" value=0.8
+                                                maxlength="5" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
                                                 variabilitas jangka pendek</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
-                                    <label class="col-form-label col-md-6 col-sm-6 label-align"
-                                        style="float: left; padding-right: 20px; font-size: x-large;"><u>Long
-                                            Term Variability : </u>
-                                    </label>
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Long
+                                        Term Variability : </u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Long Term Variability : </u></h1>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Abnormal :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="percentage_of_time_with_abnormal"
-                                                id="percentage_of_time_with_abnormal"
-                                                placeholder="Percentage Of Time With Abnormal Long Term Variability"
-                                                value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Abnormal</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="percentage_of_time_with_abnormal"
+                                                id="percentage_of_time_with_abnormal" placeholder="" value=0
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah Persentase waktu dari
                                                 variabilitas jangka panjang yang abnormal</label>
                                         </div>
@@ -265,37 +311,42 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;">Mean : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="mean_value_of_long_term_variability"
-                                                id="mean_value_of_long_term_variability"
-                                                placeholder="Mean Value Of Long Term Variability" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="mean_value_of_long_term_variability"
+                                                id="mean_value_of_long_term_variability" placeholder="" maxlength="5"
+                                                value=0 required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai rata-rata dari
                                                 variabilitas jangka panjang</label>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="col-md-6" style="margin-top: 50px; float: left; padding-left: 30px ">
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
-                                    <label class="col-form-label col-md-6 col-sm-6 label-align"
-                                        style="float: left; padding-right: 20px; font-size: x-large;"><u>Histogram :
-                                        </u>
-                                    </label>
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Histogram :
+                                    </u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Histogram : </u></h1>
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Width : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_width" id="histogram_width"
-                                                placeholder="Histogram Width" value=39 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Width</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_width" id="histogram_width" placeholder="" maxlength="3"
+                                                value=39 required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah lebar dari histogram detak
                                                 jantung janin</label>
                                         </div>
@@ -303,13 +354,16 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Min : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_min" id="histogram_min"
-                                                placeholder="Histogram Min" value=50 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Min</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_min" id="histogram_min" placeholder="" value=50
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai minimum dari
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -317,29 +371,46 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Max : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_max" id="histogram_max"
-                                                placeholder="Histogram Max" value=157 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Max</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_max" id="histogram_max" placeholder="" value=157
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah nilai maximum dari
                                                 histogram detak jantung janin</label>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- Kolom 3 -->
+                            <div class="col-md-4"
+                                style="margin-top: 50px; float: left; padding-left: 30px; height: 616px">
+                                <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
+                                    <!-- <label class="col-form-label col-md-6 col-sm-6 label-align"
+                                    style="float: left; padding-right: 20px; font-size: x-large;"><u>Histogram :
+                                    </u>
+                                </label> -->
+                                    <h1 style="font-size: large;"><u>Histogram : </u></h1>
+                                </div>
+
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Number
-                                            Of Peaks : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_number_of_peaks"
-                                                id="histogram_number_of_peaks" placeholder="Histogram Number Of Peaks"
-                                                value=1 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Number of Peaks</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_number_of_peaks" id="histogram_number_of_peaks"
+                                                placeholder="" value=1 maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
                                                 histogram detak jantung janin mencapai titik tertinggi</label>
                                         </div>
@@ -347,15 +418,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Number
-                                            Of Zeroes : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_number_of_zeroes"
-                                                id="histogram_number_of_zeroes" placeholder="Histogram Number Of Zeroes"
-                                                value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Number of Zeroes</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_number_of_zeroes" id="histogram_number_of_zeroes"
+                                                placeholder="" value=0 maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah jumlah dari banyaknya nilai
                                                 histogram detak jantung janin mencapai titik 0</label>
                                         </div>
@@ -363,13 +436,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Mode : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_mode" id="histogram_mode"
-                                                placeholder="Histogram Mode" value=133 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Mode</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_mode" id="histogram_mode" placeholder="" value=133
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah modus dari nilai
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -377,13 +454,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Mean : </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_mean" id="histogram_mean"
-                                                placeholder="Histogram Mean" value=143 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Mean</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_mean" id="histogram_mean" placeholder="" value=143
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah mean dari nilai
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -391,14 +472,16 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Median :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_median" id="histogram_median"
-                                                placeholder="Histogram Median" value=146 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">Median</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_median" id="histogram_median" placeholder="" value=146
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah median dari nilai
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -406,14 +489,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Variance :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_variance" id="histogram_variance"
-                                                placeholder="Histogram Variance" value=1 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Variance</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_variance" id="histogram_variance" placeholder="" value=1
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah varian dari nilai
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -421,14 +507,17 @@
                                 </div>
                                 <div class="mb-12 col-md-12" style="float: left; padding-bottom: 20px;">
                                     <div class="form-group">
-                                        <label class="col-form-label col-md-4 col-sm-4 label-align"
-                                            style="float: left; text-align: end; padding-right: 20px;"> Tendency :
-                                        </label>
-                                        <div class="col-md-5 col-sm-5" style="float: left;">
-                                            <input class="col-md-2 col-sm-2 form-control" style="width: 150px;"
-                                                type="text" name="histogram_tendency" id="histogram_tendency"
-                                                placeholder="Histogram Tendency" value=0 required>
-                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                        <label class="col-form-label col-md-2 col-sm-2 label-align"
+                                            style="float: left; text-align: end; font-size: 14px;">
+                                            Tendency</label>
+                                        <label class="col-form-label col-md-1 col-sm-1 label-align"
+                                            style="float: left; text-align: end; padding-right: 20px; font-size: 14px;">
+                                            : </label>
+                                        <div class="col-md-9 col-sm-9" style="float: left;">
+                                            <input class="col-md-2 col-sm-2 form-control inputcss" type="text"
+                                                name="histogram_tendency" id="histogram_tendency" placeholder="" value=0
+                                                maxlength="3" required>
+                                            <label class="col-form-label col-md-9 col-sm-9 label-align"
                                                 style="float: left; font-size: 12px;">Adalah tendensi dari nilai
                                                 histogram detak jantung janin</label>
                                         </div>
@@ -444,10 +533,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>
+                <!-- </div> -->
             </section>
             <!-- End Hero -->
         </div>
@@ -472,7 +561,7 @@
     <!-- Template Main JS File -->
     <script src="../static/main.js"></script>
 
-    <script>
+    <!-- <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
                 document.querySelector(
@@ -486,7 +575,7 @@
                     "body").style.visibility = "visible";
             }
         };
-    </script>
+    </script> -->
 
 </body>
 

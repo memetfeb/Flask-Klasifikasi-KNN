@@ -6,10 +6,16 @@ import time
 
 def time_convert(sec):
   mins = sec // 60
-  sec = round(sec % 60, 3)
+  sec = round(sec % 60, 1)
   hours = mins // 60
   mins = mins % 60
-  return "{0}:{1}:{2}".format(int(hours),int(mins),sec)
+  if(hours == 0):
+    if(mins == 0):
+      return "{0} Detik".format(sec)
+    else:
+      return "{0} Menit {1} Detik".format(int(mins),sec)
+  else:
+    return "{0} Jam {1} Menit {2} Detik".format(int(hours),int(mins),sec)
 
 # Fungsi Euclidean
 def euclidean(r1, r2):
@@ -133,21 +139,23 @@ def pengujian1(kelas1,kelas2,kelas3):
     nilaikterbaik = 0
     terbaik = []
     hasil = []
+
     for i in range(3,23):
-        start_time = time.time()
-        a = []
-        a.append(i)
-        nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
-        a.append(round(nilai, 3))
-        end_time = time.time()
-        time_lapsed = end_time - start_time
-        time_lapsed = time_convert(time_lapsed)
-        print(f"K: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
-        a.append(time_lapsed)
-        akurasi.append(a)
-        if(nilaikterbaik < a[1]):
-            nilaikterbaik = a[1]
-            kterbaik = a[0]
+    # for i in range(3,7):
+      start_time = time.time()
+      a = []
+      a.append(i)
+      nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
+      a.append(round(nilai, 3))
+      end_time = time.time()
+      time_lapsed = end_time - start_time
+      time_lapsed = time_convert(time_lapsed)
+      print(f"K: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
+      a.append(time_lapsed)
+      akurasi.append(a)
+      if(nilaikterbaik < a[1]):
+        nilaikterbaik = a[1]
+        kterbaik = a[0]
     terbaik.append(kterbaik)
     terbaik.append(round(nilaikterbaik, 3))
     hasil.append(terbaik)
@@ -160,21 +168,23 @@ def pengujian2(kelas1,kelas2,kelas3):
     nilaifoldterbaik = 0
     terbaik = []
     hasil = []
+
     for i in range(2,11):
-        start_time = time.time()
-        a = []
-        a.append(i)
-        nilai = np.array(kfcv(kelas1,kelas2,kelas3,i, 4)).mean()
-        a.append(round(nilai, 3))
-        end_time = time.time()
-        time_lapsed = end_time - start_time
-        time_lapsed = time_convert(time_lapsed)
-        print(f"Kfold: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
-        a.append(time_lapsed)
-        akurasi.append(a)
-        if(nilaifoldterbaik < a[1]):
-            nilaifoldterbaik = a[1]
-            foldterbaik = a[0]
+    # for i in range(2,5):
+      start_time = time.time()
+      a = []
+      a.append(i)
+      nilai = np.array(kfcv(kelas1,kelas2,kelas3,i, 4)).mean()
+      a.append(round(nilai, 3))
+      end_time = time.time()
+      time_lapsed = end_time - start_time
+      time_lapsed = time_convert(time_lapsed)
+      print(f"Kfold: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
+      a.append(time_lapsed)
+      akurasi.append(a)
+      if(nilaifoldterbaik < a[1]):
+        nilaifoldterbaik = a[1]
+        foldterbaik = a[0]
     terbaik.append(foldterbaik)
     terbaik.append(round(nilaifoldterbaik, 3))
     hasil.append(terbaik)

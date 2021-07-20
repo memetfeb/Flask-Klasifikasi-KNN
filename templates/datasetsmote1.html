@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dataset SMOTE - Klasifikasi Kardiotokografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
+    <title>Klasifikasi Kardiotokografi Dengan Algoritma K-Nearest Neighbor (K-NN)</title>
     <meta content="" name="description">
 
     <meta content="" name="keywords">
@@ -106,75 +106,73 @@
                         </div>
 
                         <div class="col-12 lg-12 sm-12" style="margin-top: 30px; font-size: 10px;">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered table-striped">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Label</th>
-                                            <th>Baseline Value</th>
-                                            <th>Accelerations</th>
-                                            <th>Fetal Movement</th>
-                                            <th>Uterine Contractions</th>
-                                            <th>Light Dece</th>
-                                            <th>Severe Dece</th>
-                                            <th>Prolongued Dece</th>
-                                            <th>Ab ShortTerm</th>
-                                            <th>Mean ShortTerm</th>
-                                            <th>Ab LongTerm</th>
-                                            <th>Mean LongTerm</th>
-                                            <th>Histogram Width</th>
-                                            <th>Histogram Min</th>
-                                            <th>Histogram Max</th>
-                                            <th>His NumPeaks</th>
-                                            <th>His NumZeroes</th>
-                                            <th>Histogram Mode</th>
-                                            <th>Histogram Mean</th>
-                                            <th>Histogram Median</th>
-                                            <th>Histogram Variance</th>
-                                            <th>Histogram Tendency</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for data in users %}
-                                        <tr>
-                                            <td>{{ loop.index + pagination.skip }}</td>
-                                            <td class="align-middle">
-                                                {% if(data[21] == 1):%}
-                                                Normal
-                                                {% elif(data[21] == 2):%}
-                                                Suspect
-                                                {% else: %}
-                                                Pathological
-                                                {% endif %}
-                                            </td>
-                                            <td style="text-align: end;">{{ "%g" % data[0] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[1] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[2] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[3] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[4] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[5] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[6] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[7] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[8] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[9] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[10] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[11] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[12] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[13] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[14] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[15] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[16] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[17] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[18] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[19] }}</td>
-                                            <td style="text-align: end;">{{ "%g" % data[20] }}</td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                            {{ pagination.links }}
+                            <table id="myTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr class="text-center" style="background-color: #fff;">
+                                        <td>No.</td>
+                                        <td>Label</td>
+                                        <td>Baseline Value</td>
+                                        <td>Accelerations</td>
+                                        <td>Fetal Movement</td>
+                                        <td>Uterine Contractions</td>
+                                        <td>Light Dece</td>
+                                        <td>Severe Dece</td>
+                                        <td>Prolongued Dece</td>
+                                        <td>Ab ShortTerm</td>
+                                        <td>Mean ShortTerm</td>
+                                        <td>Ab LongTerm</td>
+                                        <td>Mean LongTerm</td>
+                                        <td>Histogram Width</td>
+                                        <td>Histogram Min</td>
+                                        <td>Histogram Max</td>
+                                        <td>His NumPeaks</td>
+                                        <td>His NumZeroes</td>
+                                        <td>Histogram Mode</td>
+                                        <td>Histogram Mean</td>
+                                        <td>Histogram Median</td>
+                                        <td>Histogram Variance</td>
+                                        <td>Histogram Tendency</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(0, lendata) %}
+                                    <tr>
+                                        <td class="align-middle text-center">{{ i+1 }}</td>
+                                        <td class="align-middle">{% 
+                                            if(data[i][21] == 1):%}
+                                            Normal
+                                            {% elif(data[i][21] == 2):%}
+                                            Suspect
+                                            {% else: %}
+                                            Pathological
+                                            {% endif %}
+                                        </td>
+                                        <td class="align-middle">{{ data[i][0] }}</td>
+                                        <td class="align-middle">{{ data[i][1] }}</td>
+                                        <td class="align-middle">{{ data[i][2] }}</td>
+                                        <td class="align-middle">{{ data[i][3] }}</td>
+                                        <td class="align-middle">{{ data[i][4] }}</td>
+                                        <td class="align-middle">{{ data[i][5] }}</td>
+                                        <td class="align-middle">{{ data[i][6] }}</td>
+                                        <td class="align-middle">{{ data[i][7] }}</td>
+                                        <td class="align-middle">{{ data[i][8] }}</td>
+                                        <td class="align-middle">{{ data[i][9] }}</td>
+                                        <td class="align-middle">{{ data[i][10] }}</td>
+                                        <td class="align-middle">{{ data[i][11] }}</td>
+                                        <td class="align-middle">{{ data[i][12] }}</td>
+                                        <td class="align-middle">{{ data[i][13] }}</td>
+                                        <td class="align-middle">{{ data[i][14] }}</td>
+                                        <td class="align-middle">{{ data[i][15] }}</td>
+                                        <td class="align-middle">{{ data[i][16] }}</td>
+                                        <td class="align-middle">{{ data[i][17] }}</td>
+                                        <td class="align-middle">{{ data[i][18] }}</td>
+                                        <td class="align-middle">{{ data[i][19] }}</td>
+                                        <td class="align-middle">{{ data[i][20] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
                         </div>
                     </div>
                 </div>
