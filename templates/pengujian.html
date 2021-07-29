@@ -135,7 +135,7 @@
                                         <tr>
                                             <td>No.</td>
                                             <td>KNN</td>
-                                            <td>Time</td>
+                                            <td>Waktu</td>
                                             <td>Hasil</td>
                                         </tr>
                                     </th>
@@ -144,7 +144,7 @@
                                         <td style="text-align: center">{{ i+1 }}</td>
                                         <td style="text-align: center">K-{{ knn[1][i][0] }}</td>
                                         <td style="text-align: center">{{ knn[1][i][2] }}</td>
-                                        <td style="text-align: center">{{ "%.3f" %  knn[1][i][1] }}</td>
+                                        <td style="text-align: center">{{ "%.2f" %  knn[1][i][1] }}%</td>
                                     </tr>
                                     {% endfor %}
                                 </table>
@@ -152,7 +152,7 @@
                                 <a><b>Kesimpulan Pengujian 1 : </b></a>
                                 <br>
                                 <a>Hasil Pengujian diperoleh nilai K terbaik pada KNN adalah K-{{ knn[0][0] }} dengan
-                                    nilai akurasi {{ "%.3f" %  knn[0][1] }}.</a>
+                                    nilai akurasi {{ "%.2f" %  knn[0][1] }}%.</a>
                             </div>
                         </div>
                         <div class="col-md-12 " style="margin-top: 50px;">
@@ -162,8 +162,7 @@
                                     Pengujian dilakukan dengan cara mengamati nilai akurasi dari masing-masing fold pada
                                     10-Fold Cross Validation. Dengan nilai K tetangga terdekat pada metode KNN adalah
                                     hasil dari Pengujian 1. Fold dengan nilai akurasi terbaik akan diambil data
-                                    latihnya dan akan digunakan untuk mengklasifikasi data baru diluar dataset
-                                    kardiotokografi</a>
+                                    latihnya dan akan digunakan untuk mengklasifikasi data uji baru.</a>
                                 <br><br>
                                 <a><b>Hasil Pengujian 2</b></a>
                                 <table>
@@ -171,7 +170,7 @@
                                         <tr>
                                             <td>No.</td>
                                             <td>Fold</td>
-                                            <td>Time</td>
+                                            <td>Waktu</td>
                                             <td>Hasil</td>
                                         </tr>
                                     </th>
@@ -181,7 +180,7 @@
                                         <td style="text-align: center">{{ i+1 }}</td>
                                         <td style="text-align: center">Fold-{{ kfold[1][i][0] }}</td>
                                         <td style="text-align: center">{{ kfold[1][i][2] }}</td>
-                                        <td style="text-align: center">{{ "%.3f" % kfold[1][i][1] }}</td>
+                                        <td style="text-align: center">{{ "%.2f" % kfold[1][i][1] }}%</td>
                                     </tr>
                                     {% endfor %}
                                 </table>
@@ -189,7 +188,7 @@
                                 <a><b>Kesimpulan Pengujian 2 : </b></a>
                                 <br>
                                 <a>Hasil Pengujian diperoleh nilai akurasi terbaik pada <i>fold</i> {{ kfold[0][0] }}
-                                    dengan nilai akurasi sebesar {{ "%.3f" %  kfold[0][1] }}.</a>
+                                    dengan nilai akurasi sebesar {{ "%.2f" %  kfold[0][1] }}%.</a>
                             </div>
                         </div>
                     </div>

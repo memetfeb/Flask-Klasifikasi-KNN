@@ -291,13 +291,13 @@ def pengujian1(kelas1,kelas2,kelas3):
     terbaik = []
     hasil = []
 
-    for i in range(3,35):
+    for i in range(3,5):
       if(i%2 == 0):
         start_time = time.time()
         a = []
         a.append(i)
         nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
-        a.append(round(nilai, 4))
+        a.append(round(nilai, 4)*100)
         end_time = time.time()
         time_lapsed = end_time - start_time
         time_lapsed = time_convert(time_lapsed)
@@ -406,7 +406,7 @@ def pengujian2(dataA, dataB, dataC, Ka, nilaiK):
 
     a.append(i+1)
     #KNN
-    akurasi = knn(train, klsTrain, test, klsTest, nilaiK)
+    akurasi = knn(train, klsTrain, test, klsTest, nilaiK)*100
 
     end_time = time.time()
     time_lapsed = end_time - start_time
