@@ -43,19 +43,100 @@ def euclidean(r1, r2):
 
 #KNN
 
-def knn(X_train, y_train, X_test, y_test, n):
+def knn2(X_train, y_train, X_test, y_test, n):
+  normal_TTP = 0
+  normal_TFN = 0
+  normal_TTN = 0
+  normal_TFP = 0
+  suspect_TTP = 0
+  suspect_TFN = 0
+  suspect_TTN = 0
+  suspect_TFP = 0
+  pathologic_TTP = 0
+  pathologic_TFN = 0
+  pathologic_TTN = 0
+  pathologic_TFP = 0
+
   y_hat = [classify(point, X_train, y_train,n) for point in X_test]
   val = []
   for i in range(len(y_hat)):
     val.append(int(y_hat[i] == y_test[i]))
-  return np.sum(val)/len(val)
+    
+    # sensitivitas normal
+    if (int(y_hat[i]) == 1):
+      if (int(y_hat[i] == y_test[i])):
+        normal_TTP += 1
+      else:
+        normal_TFN += 1
+    
+    # sensitivitas suspect
+    if (int(y_hat[i]) == 2):
+      if (int(y_hat[i] == y_test[i])):
+        suspect_TTP += 1
+      else:
+        suspect_TFN += 1
+
+    # sensitivitas pathologic
+    if (int(y_hat[i]) == 3):
+      if (int(y_hat[i] == y_test[i])):
+        pathologic_TTP += 1
+      else:
+        pathologic_TFN += 1
+
+    # spesifisitas normal
+    if (int(y_test[i]) != 1):
+      if (int(y_hat[i]) == 1):
+        normal_TFP += 1
+      else:
+        normal_TTN += 1
+
+    # spesifisitas suspect
+    if (int(y_test[i]) != 2):
+      if (int(y_hat[i]) == 2):
+        suspect_TFP += 1
+      else:
+        suspect_TTN += 1
+
+    # spesifisitas pathologic
+    if (int(y_test[i]) != 3):
+      if (int(y_hat[i]) == 3):
+        pathologic_TFP += 1
+      else:
+        pathologic_TTN += 1
+  
+  sensitivitas_normal = normal_TTP/(normal_TTP + normal_TFN)
+  sensitivitas_suspect = suspect_TTP/(suspect_TTP + suspect_TFN)
+  sensitivitas_pathologic = pathologic_TTP/(pathologic_TTP + pathologic_TFN)
+  
+  spesifisitas_normal = normal_TTN/(normal_TTN+normal_TFP)
+  spesifisitas_suspect = suspect_TTN/(suspect_TTN+suspect_TFP)
+  spesifisitas_pathologic = pathologic_TTN/(pathologic_TTN+pathologic_TFP)
+
+
+  sensitivitas = (sensitivitas_normal+sensitivitas_suspect+sensitivitas_pathologic)/3
+  spesifisitas = (spesifisitas_normal+spesifisitas_suspect+spesifisitas_pathologic)/3
+
+  print(f"normal_TTP: {normal_TTP}; normal_TFN: {normal_TFN}")
+  print(f"Sensitivitas Normal: {sensitivitas_normal}")
+
+  akurasi = np.sum(val)/len(val)
+
+  return [akurasi, sensitivitas, spesifisitas]
 
 def classify(point, data, label, n):
-  distances = []
+  # distances = []
+  # for i in range(len(data)):
+  #   distances.append([euclidean(point, data[i]), label[i]])
+  # distances.sort(key=lambda x: x[0])
+  # top_classes = [x[1] for x in distances[0:n]]
+
+  distances = np.zeros([len(data)])
+  
   for i in range(len(data)):
-    distances.append([euclidean(point, data[i]), label[i]])
-  distances.sort(key=lambda x: x[0])
-  top_classes = [x[1] for x in distances[0:n]]
+    distances[i] = euclidean(point, data[i])
+  
+  top_classes = pd.DataFrame({"data": distances, "label": label}).sort_values("data").label.iloc[:n]
+  
   repeat = True
   try:
     y_hat = mode(top_classes)
@@ -225,27 +306,53 @@ def kfcv(dataA, dataB, dataC, kfold, k):
   KA0 = 0
   KB0 = 0
   KC0 = 0
-  hasilFold = []
+  # hasilFold = []
+  akurasi_fold = []
+  sensitivitas_fold = []
+  spesifisitas_fold = []
   
   for i in range(kfold):
     klsTest = []
     klsTrain = []
     train = []
     test = []
-    if i == kfold-1:
+    # if i == kfold-1:
+    #   KA0 = KAp
+    #   KB0 = KBp
+    #   KC0 = KBp
+    #   KAp = len(dataA) 
+    #   KBp = len(dataB) 
+    #   KCp = len(dataC) 
+    # else:
+    #   KA0 = KA*i
+    #   KB0 = KB*i
+    #   KC0 = KC*i
+    #   KAp = KA*(i+1)
+    #   KBp = KB*(i+1)
+    #   KCp = KC*(i+1)
+
+    if i < 5 :
+      if i == 0:
+        KA0 = 0
+        KB0 = 0
+        KC0 = 0
+        KAp = 165
+        KBp = 166
+        KCp = 166
+      else:
+        KA0 = KAp
+        KB0 = KBp
+        KC0 = KCp
+        KAp += 165
+        KBp += 166
+        KCp += 166
+    else :
       KA0 = KAp
       KB0 = KBp
-      KC0 = KBp
-      KAp = len(dataA) 
-      KBp = len(dataB) 
-      KCp = len(dataC) 
-    else:
-      KA0 = KA*i
-      KB0 = KB*i
-      KC0 = KC*i
-      KAp = KA*(i+1)
-      KBp = KB*(i+1)
-      KCp = KC*(i+1)
+      KC0 = KCp
+      KAp += 166
+      KBp += 165
+      KCp += 165
 
     for j in range(len(dataA)):
       if j>=KA0 and j<KAp :
@@ -274,43 +381,65 @@ def kfcv(dataA, dataB, dataC, kfold, k):
     test = np.delete(test, [0,0], axis=1)
 
     #KNN manual
-    akurasi = knn(train, klsTrain, test, klsTest, k)
+    # akurasi = knn(train, klsTrain, test, klsTest, k)
 
-    hasilFold.append(akurasi)
+    ass = knn2(train, klsTrain, test, klsTest, k) 
+    akurasi = ass[0]
+    sensitivitas = ass[1] 
+    spesifisitas = ass[2]
 
-  return hasilFold
+    akurasi_fold.append(akurasi)
+    sensitivitas_fold.append(sensitivitas)
+    spesifisitas_fold.append(spesifisitas)
+
+  return [akurasi_fold, sensitivitas_fold, spesifisitas_fold]
+
+    # hasilFold.append(akurasi)
+
+  # return hasilFold
 
 #END K-FOLD CROSS VALIDATION
 
 #PENGUJIAN 1 UNTUK MENDAPATKAN NILAI K TERBAIK
 
 def pengujian1(kelas1,kelas2,kelas3):
-    akurasi = []
+    semua_akurasi = []
     kterbaik = 0
     nilaikterbaik = 0
     terbaik = []
     hasil = []
 
-    for i in range(3,5):
+    for i in range(4,35):
       if(i%2 == 0):
         start_time = time.time()
         a = []
         a.append(i)
-        nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
-        a.append(round(nilai, 4)*100)
+        # nilai = np.array(kfcv(kelas1,kelas2,kelas3,10, i)).mean()
+        # a.append(round(nilai, 4)*100)
+
+        kfold = kfcv(kelas1,kelas2,kelas3,10, i)
+        akurasi = np.array(kfold[0]).mean()
+        sensitivitas = np.array(kfold[1]).mean()
+        spesifisitas = np.array(kfold[2]).mean()
+
+        a.append(round(akurasi,4)*100)
+        a.append(round(sensitivitas,4)*100)
+        a.append(round(spesifisitas,4)*100)
+
         end_time = time.time()
         time_lapsed = end_time - start_time
         time_lapsed = time_convert(time_lapsed)
-        print(f"K: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
+        # print(f"K: {a[0]} --> {a[1]}  ; time = {time_lapsed}")
+        print(f"K: {a[0]} --> Akurasi: {a[1]} ; Sensitivitas: {a[2]} ; Spesifisitas: {a[3]} ; time = {time_lapsed}")
         a.append(time_lapsed)
-        akurasi.append(a)
+        semua_akurasi.append(a)
         if(nilaikterbaik < a[1]):
           nilaikterbaik = a[1]
           kterbaik = a[0]
     terbaik.append(kterbaik)
     terbaik.append(round(nilaikterbaik, 4))
     hasil.append(terbaik)
-    hasil.append(akurasi)
+    hasil.append(semua_akurasi)
     return hasil
 
 #END PENGUJIAN 1
@@ -342,12 +471,7 @@ def pengujian2(dataA, dataB, dataC, Ka, nilaiK):
     test = []
     data_train = []
     data_test = []
-    # dataNormalTrain = 0
-    # dataNormalTest = 0
-    # dataSuspectTrain = 0
-    # dataSuspectTest = 0
-    # dataPathologicTrain = 0
-    # dataPathologicTest = 0
+    akurasi = []
 
     if i < 5 :
       if i == 0:
@@ -406,12 +530,15 @@ def pengujian2(dataA, dataB, dataC, Ka, nilaiK):
 
     a.append(i+1)
     #KNN
-    akurasi = knn(train, klsTrain, test, klsTest, nilaiK)*100
+    ass = knn2(train, klsTrain, test, klsTest, nilaiK)
+    akurasi = ass[0]*100
 
     end_time = time.time()
     time_lapsed = end_time - start_time
     time_lapsed = time_convert(time_lapsed)
     a.append(akurasi)
+    a.append(ass[1]*100)
+    a.append(ass[2]*100)
     a.append(time_lapsed)
 
     hasil_fold.append(a)
@@ -421,7 +548,7 @@ def pengujian2(dataA, dataB, dataC, Ka, nilaiK):
       nilai_fold = akurasi
       # data_train_terbaik = data_train
       # data_test_terbaik = data_test
-    print(f"Fold : {i+1}; Akurasi: {akurasi}; time: {time_lapsed}")
+    print(f"Fold : {i+1}; Akurasi: {akurasi}; Sensitivitas: {a[2]}; Spesifisitas: {a[3]}; time: {time_lapsed}")
 
   terbaik.append(fold_terbaik)
   terbaik.append(nilai_fold)

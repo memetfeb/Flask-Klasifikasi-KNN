@@ -10,7 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import MinMaxScaler
 import imblearn
 from imblearn.over_sampling import SMOTE
-import pengujian as p1
+import knn as p1
 import time
 from flask_paginate import Pagination, get_page_args, get_page_parameter
 # save numpy array as csv file
@@ -119,21 +119,25 @@ def pengujian():
   start_time_pengujian = time.time()
 
   #Import from csv
-  d = pd.read_csv('static/fetal_health.csv')
-  X = d.drop(columns="fetal_health")
-  y = d.fetal_health
-  y = np.array(y)
+  # d = pd.read_csv('static/fetal_health.csv')
+  # X = d.drop(columns="fetal_health")
+  # y = d.fetal_health
+  # y = np.array(y)
 
   # Normalisasi Data
-  X_scaled = p1.MinMaxScalerManual(np.array(X),np.array(X))
+  # X_scaled = p1.MinMaxScalerManual(np.array(X),np.array(X))
 
   # Balancing DATA SMOTE
-  oversample = SMOTE()
-  X_scaled, y = oversample.fit_resample(X_scaled, y)
+  # oversample = SMOTE()
+  # X_scaled, y = oversample.fit_resample(X_scaled, y)
 
   # Join Data dan Label
-  y1 = y.reshape(4965, 1) 
-  data = np.hstack((y1, X_scaled))
+  # y1 = y.reshape(4965, 1) 
+  # data = np.hstack((y1, X_scaled))
+
+  #Import from csv smote
+  data = pd.read_csv('static/data_smote.csv', header = None)
+  data = np.array(data)
 
   kelas1 = p1.label1(data)
   kelas2 = p1.label2(data)
@@ -156,7 +160,7 @@ def pengujian():
 #PROSES DATA AWAL
 
 data_asli = np.array(pd.read_csv('static/fetal_health.csv'))
-def get_users_data_asli(offset=0, per_page=100):
+def get_users_data_asli(offset=0, per_page=20):
     return data_asli[offset: offset + per_page]
 @app.route("/datasetasli")
 def datasetasli():

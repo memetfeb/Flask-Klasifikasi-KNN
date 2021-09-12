@@ -136,15 +136,19 @@
                                             <td>No.</td>
                                             <td>KNN</td>
                                             <td>Waktu</td>
-                                            <td>Hasil</td>
+                                            <td>Akurasi</td>
+                                            <td>Sensitivitas</td>
+                                            <td>Spesifisitas</td>
                                         </tr>
                                     </th>
                                     {% for i in range(0, lenknn) %}
                                     <tr>
                                         <td style="text-align: center">{{ i+1 }}</td>
                                         <td style="text-align: center">K-{{ knn[1][i][0] }}</td>
-                                        <td style="text-align: center">{{ knn[1][i][2] }}</td>
+                                        <td style="text-align: center">{{ knn[1][i][4] }}</td>
                                         <td style="text-align: center">{{ "%.2f" %  knn[1][i][1] }}%</td>
+                                        <td style="text-align: center">{{ "%.2f" %  knn[1][i][2] }}%</td>
+                                        <td style="text-align: center">{{ "%.2f" %  knn[1][i][3] }}%</td>
                                     </tr>
                                     {% endfor %}
                                 </table>
@@ -170,8 +174,10 @@
                                         <tr>
                                             <td>No.</td>
                                             <td>Fold</td>
-                                            <td>Waktu</td>
-                                            <td>Hasil</td>
+                                            <!-- <td>Waktu</td> -->
+                                            <td>Akurasi</td>
+                                            <td>Sensitivitas</td>
+                                            <td>Spesifisitas</td>
                                         </tr>
                                     </th>
 
@@ -179,8 +185,10 @@
                                     <tr>
                                         <td style="text-align: center">{{ i+1 }}</td>
                                         <td style="text-align: center">Fold-{{ kfold[1][i][0] }}</td>
-                                        <td style="text-align: center">{{ kfold[1][i][2] }}</td>
+                                        <!-- <td style="text-align: center">{{ kfold[1][i][2] }}</td> -->
                                         <td style="text-align: center">{{ "%.2f" % kfold[1][i][1] }}%</td>
+                                        <td style="text-align: center">{{ "%.2f" % kfold[1][i][2] }}%</td>
+                                        <td style="text-align: center">{{ "%.2f" % kfold[1][i][3] }}%</td>
                                     </tr>
                                     {% endfor %}
                                 </table>
